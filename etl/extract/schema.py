@@ -1,0 +1,48 @@
+from pyspark.sql.types import ArrayType, StructType, StructField, StringType, LongType
+
+# Define listenBrainz schema
+listen_brainz_schema = StructType([
+    StructField("listened_at", LongType(), True),
+    StructField("recording_msid", StringType(), True),
+    StructField("track_metadata", StructType([
+        StructField("additional_info", StructType([
+            StructField("albumartist", StringType(), True),
+            StructField("artist_mbids", ArrayType(StringType(), True), True),
+            StructField("artist_msid", StringType(), True),
+            StructField("artist_names", ArrayType(StringType(), True), True),
+            StructField("choosen_by_user", LongType(), True),
+            StructField("date", StringType(), True),
+            StructField("dedup_tag", LongType(), True),
+            StructField("discnumber", StringType(), True),
+            StructField("duration", StringType(), True),
+            StructField("duration_ms", LongType(), True),
+            StructField("isrc", StringType(), True),
+            StructField("listening_from", StringType(), True),
+            StructField("rating", StringType(), True),
+            StructField("recording_mbid", StringType(), True),
+            StructField("recording_msid", StringType(), True),
+            StructField("release_artist_name", StringType(), True),
+            StructField("release_artist_names", ArrayType(StringType(), True), True),
+            StructField("release_group_mbid", StringType(), True),
+            StructField("release_mbid", StringType(), True),
+            StructField("release_msid", StringType(), True),
+            StructField("source", StringType(), True),
+            StructField("spotify_album_artist_ids", ArrayType(StringType(), True), True),
+            StructField("spotify_album_id", StringType(), True),
+            StructField("spotify_artist_ids", ArrayType(StringType(), True), True),
+            StructField("spotify_id", StringType(), True),
+            StructField("tags", ArrayType(StringType(), True), True),
+            StructField("totaldiscs", StringType(), True),
+            StructField("totaltracks", StringType(), True),
+            StructField("track_length", StringType(), True),
+            StructField("track_mbid", StringType(), True),
+            StructField("track_number", StringType(), True),
+            StructField("tracknumber", StringType(), True),
+            StructField("work_mbids", ArrayType(StringType(), True), True),
+        ]), True),
+        StructField("artist_name", StringType(), True),
+        StructField("release_name", StringType(), True),
+        StructField("track_name", StringType(), True),
+    ]), True),
+    StructField("user_name", StringType(), True)
+])

@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  etl:
+    build: .
+    volumes:
+      - ./output:/app/output
+    command: python3 main.py
